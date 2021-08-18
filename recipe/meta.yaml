@@ -16,12 +16,12 @@ build:
 
 requirements:
   host:
-    - python >=3.6
+    - python
     - pip
     - setuptools_scm >=3.4.1
     - toml
   run:
-    - python >=3.6
+    - python
     - more-itertools
 
 test:
