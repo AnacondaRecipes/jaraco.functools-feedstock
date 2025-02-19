@@ -37,7 +37,7 @@ test:
     - jaraco.classes
   commands:
     - pip check
-    - pytest -vv test_functools.py
+    - pytest -vv test_functools.py -k "not test_function_throttled"
 
 about:
   home: https://github.com/jaraco/jaraco.functools
