@@ -1,5 +1,5 @@
 {% set name = "jaraco.functools" %}
-{% set version = "4.1.0" %}
+{% set version = "4.4.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/jaraco_functools-{{ version }}.tar.gz
-  sha256: 70f7e0e2ae076498e212562325e805204fc092d7b4c17e0e86c959e249701a9d
+  sha256: da21933b0417b89515562656547a77b4931f98176eb173644c0d35032a33d6bb
 
 build:
   number: 0
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  skip: True  # [py<38]
+  skip: true  # [py<39]
 
 requirements:
   host:
@@ -20,11 +20,17 @@ requirements:
     - pip
     - setuptools_scm >=3.4.1
     - toml
-    - wheel
-    - setuptools
+    - setuptools >=77
+    - setuptools-scm >=3.4.1
+    - coherent.licensed
   run:
     - python
     - more-itertools
+    - more_itertools
+  run_constrained:
+    - pytest-checkdocs >=2.4
+    - pytest-enabler >=3.4
+    - pytest-mypy >=1.0.1
 
 test:
   source_files:
