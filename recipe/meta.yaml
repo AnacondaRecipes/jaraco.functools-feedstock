@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/jaraco_functools-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name|replace(".", "_") }}-{{ version }}.tar.gz
   sha256: da21933b0417b89515562656547a77b4931f98176eb173644c0d35032a33d6bb
 
 build:
@@ -16,21 +16,15 @@ build:
 
 requirements:
   host:
-    - python
     - pip
-    - setuptools_scm >=3.4.1
-    - toml
+    - python
     - setuptools >=77
     - setuptools-scm >=3.4.1
-    - coherent.licensed
+    - toml
+    # - coherent.licensed # Is listed in requirements, we don't have it in the registry
   run:
     - python
     - more-itertools
-    - more_itertools
-  run_constrained:
-    - pytest-checkdocs >=2.4
-    - pytest-enabler >=3.4
-    - pytest-mypy >=1.0.1
 
 test:
   source_files:
@@ -39,7 +33,7 @@ test:
     - jaraco.functools
   requires:
     - pip
-    - pytest
+    - pytest >=6,!= 8.1.*
     - jaraco.classes
   commands:
     - pip check
