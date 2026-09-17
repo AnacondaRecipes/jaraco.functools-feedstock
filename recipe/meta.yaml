@@ -21,8 +21,8 @@ requirements:
     - setuptools >=77
     - setuptools-scm >=3.4.1
     - toml
-    - coherent.licensed
-  # - coherent.licensed # Is listed in requirements, we don't have it in the registry
+    # coherent.licensed is in upstream build-system requires; not on pkgs/main
+    # (bot added it and every build failed: Unsatisfiable MatchSpec("coherent.licensed"))
   run:
     - python
     - more-itertools
